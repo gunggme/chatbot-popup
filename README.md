@@ -21,21 +21,24 @@
 HTML 파일에 다음 스크립트 태그를 추가하세요:
 
 ```html
-<!-- 압축된 버전 (권장) -->
-<script src="https://cdn.jsdelivr.net/npm/chatbot-popup-library@1.0.0/lib/chatbot-library.min.js"></script>
+<!-- jsDelivr CDN (권장) -->
+<script src="https://cdn.jsdelivr.net/gh/gunggme/chatbot-popup@v1.0.0/lib/chatbot-library.min.js"></script>
 
-<!-- 또는 원본 버전 -->
-<script src="https://cdn.jsdelivr.net/npm/chatbot-popup-library@1.0.0/lib/chatbot-library.js"></script>
+<!-- 또는 최신 버전 -->
+<script src="https://cdn.jsdelivr.net/gh/gunggme/chatbot-popup@latest/lib/chatbot-library.min.js"></script>
+
+<!-- 원본 파일 (개발용) -->
+<script src="https://cdn.jsdelivr.net/gh/gunggme/chatbot-popup@v1.0.0/lib/chatbot-library.js"></script>
 ```
 
 ### 대안 CDN
 
 ```html
-<!-- unpkg -->
+<!-- unpkg (npm 패키지 필요) -->
 <script src="https://unpkg.com/chatbot-popup-library@1.0.0/lib/chatbot-library.min.js"></script>
 
-<!-- GitHub (jsDelivr) -->
-<script src="https://cdn.jsdelivr.net/gh/[YOUR_USERNAME]/chatbot-popup-library@1.0.0/lib/chatbot-library.min.js"></script>
+<!-- GitHub Pages -->
+<script src="https://gunggme.github.io/chatbot-popup/lib/chatbot-library.min.js"></script>
 ```
 
 ### npm으로 설치
@@ -66,7 +69,7 @@ const ChatBot = require('chatbot-popup-library');
     <h1>환영합니다!</h1>
     
     <!-- 채팅봇 스크립트 추가 -->
-    <script src="https://cdn.jsdelivr.net/npm/chatbot-popup-library@1.0.0/lib/chatbot-library.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/gunggme/chatbot-popup@latest/lib/chatbot-library.min.js"></script>
 </body>
 </html>
 ```
@@ -78,7 +81,7 @@ const ChatBot = require('chatbot-popup-library');
 // 자동 초기화 비활성화
 </script>
 <script 
-    src="https://cdn.jsdelivr.net/npm/chatbot-popup-library@1.0.0/lib/chatbot-library.min.js"
+    src="https://cdn.jsdelivr.net/gh/gunggme/chatbot-popup@latest/lib/chatbot-library.min.js"
     data-auto-init="false">
 </script>
 <script>
@@ -232,8 +235,8 @@ Response: { id, content, role, timestamp, ... }
 
 ```bash
 # 저장소 클론
-git clone https://github.com/[YOUR_USERNAME]/chatbot-popup-library.git
-cd chatbot-popup-library
+git clone https://github.com/gunggme/chatbot-popup.git
+cd chatbot-popup
 
 # 개발 서버 실행
 npm run serve
@@ -278,8 +281,8 @@ chatbot-popup-library/
 
 ## 📞 지원
 
-- 🐛 버그 리포트: [GitHub Issues](https://github.com/[YOUR_USERNAME]/chatbot-popup-library/issues)
-- 💬 질문 및 토론: [GitHub Discussions](https://github.com/[YOUR_USERNAME]/chatbot-popup-library/discussions)
+- 🐛 버그 리포트: [GitHub Issues](https://github.com/gunggme/chatbot-popup/issues)
+- 💬 질문 및 토론: [GitHub Discussions](https://github.com/gunggme/chatbot-popup/discussions)
 - 📧 이메일: your-email@example.com
 
 ## 🔄 변경 이력
@@ -294,5 +297,5 @@ chatbot-popup-library/
 ---
 
 <div align="center">
-  Made with ❤️ by <a href="https://github.com/[YOUR_USERNAME]">Your Name</a>
+  Made with ❤️ by <a href="https://github.com/gunggme">gunggme</a>
 </div> 
