@@ -13,6 +13,7 @@
 - 🎭 **테마 커스터마이징**: 색상과 스타일을 쉽게 변경 가능
 - 🚀 **제로 의존성**: 별도 라이브러리 없이 바로 사용 가능
 - 🔧 **간편한 설치**: CDN 또는 npm으로 쉬운 설치
+- 🔒 **다양한 보안 수준**: 원본부터 고급 난독화까지 4가지 버전 제공
 
 ## 🚀 빠른 시작
 
@@ -30,6 +31,48 @@ HTML 파일에 다음 스크립트 태그를 추가하세요:
 <!-- 원본 파일 (개발용) -->
 <script src="https://cdn.jsdelivr.net/gh/gunggme/chatbot-popup@v1.0.0/lib/chatbot-library.js"></script>
 ```
+
+### 🔒 보안 수준별 버전 선택
+
+용도에 맞는 보안 수준을 선택하여 사용하세요:
+
+#### 1. 원본 버전 (개발/디버깅용)
+```html
+<script src="https://cdn.jsdelivr.net/gh/gunggme/chatbot-popup@latest/lib/chatbot-library.js"></script>
+```
+- **용도**: 개발, 디버깅, 학습
+- **보안**: 낮음 (코드 완전 노출)
+- **크기**: ~22KB
+- **특징**: 읽기 쉬운 코드, 주석 포함
+
+#### 2. 압축 버전 (프로덕션 권장)
+```html
+<script src="https://cdn.jsdelivr.net/gh/gunggme/chatbot-popup@latest/lib/chatbot-library.min.js"></script>
+```
+- **용도**: 일반 프로덕션 환경
+- **보안**: 보통 (기본적인 코드 압축)
+- **크기**: ~15KB
+- **특징**: 최적화된 로딩 속도
+
+#### 3. 기본 난독화 버전 (보안 강화)
+```html
+<script src="https://cdn.jsdelivr.net/gh/gunggme/chatbot-popup@latest/lib/chatbot-library.obf.js"></script>
+```
+- **용도**: 코드 보호가 필요한 환경
+- **보안**: 높음 (변수명 암호화, 코드 흐름 복잡화)
+- **크기**: ~37KB
+- **특징**: 역공학 방지, 가독성 차단
+
+#### 4. 고급 난독화 버전 (최고 보안)
+```html
+<script src="https://cdn.jsdelivr.net/gh/gunggme/chatbot-popup@latest/lib/chatbot-library.secure.js"></script>
+```
+- **용도**: 최고 수준의 코드 보호가 필요한 환경
+- **보안**: 최고 (개발자 도구 차단, 디버깅 방지)
+- **크기**: ~168KB
+- **특징**: Self-defending, Debug protection, Dead code injection
+
+> ⚠️ **주의**: 고급 난독화 버전은 개발자 도구를 감지하고 차단하므로, 디버깅이 필요한 경우 다른 버전을 사용하세요.
 
 ### 대안 CDN
 
@@ -170,6 +213,68 @@ const greenTheme = {
 - **데스크톱**: 400px 너비의 팝업
 - **모바일**: 화면 크기에 맞춘 반응형 레이아웃
 
+## 🔒 보안 및 난독화
+
+### 보안 수준 비교
+
+| 버전 | 보안 수준 | 파일 크기 | 특징 |
+|------|-----------|-----------|------|
+| 원본 | 낮음 | ~22KB | 개발/디버깅용, 코드 완전 노출 |
+| 압축 | 보통 | ~15KB | 프로덕션 권장, 기본 최적화 |
+| 기본 난독화 | 높음 | ~37KB | 변수명 암호화, 코드 흐름 복잡화 |
+| 고급 난독화 | 최고 | ~168KB | 개발자 도구 차단, 디버깅 방지 |
+
+### 고급 난독화 기능
+
+고급 난독화 버전(`chatbot-library.secure.js`)은 다음 보안 기능을 제공합니다:
+
+- **🛡️ Self-Defending**: 개발자 도구 감지 및 차단
+- **🚫 Debug Protection**: 디버깅 시도 차단
+- **🌀 Control Flow Flattening**: 코드 흐름 완전 복잡화
+- **💀 Dead Code Injection**: 가짜 코드 삽입으로 혼란 유발
+- **🔐 String Array Encoding**: Base64 문자열 인코딩
+- **📝 Unicode Escape**: 유니코드 이스케이프 시퀀스
+- **🔀 Variable Name Mangling**: 변수명 완전 암호화
+
+### 보안 수준 선택 가이드
+
+```javascript
+// 🔓 개발 환경
+<script src="lib/chatbot-library.js"></script>
+
+// 🔒 일반 프로덕션 환경
+<script src="lib/chatbot-library.min.js"></script>
+
+// 🔐 보안이 중요한 환경
+<script src="lib/chatbot-library.obf.js"></script>
+
+// 🛡️ 최고 보안이 필요한 환경
+<script src="lib/chatbot-library.secure.js"></script>
+```
+
+## 🧪 테스트 및 데모
+
+### 온라인 데모
+
+- **[기본 데모](examples/index.html)**: 기본 기능 데모
+- **[난독화 테스트](test-obfuscated.html)**: 보안 수준별 버전 비교
+- **[CDN 테스트](test-cdn.html)**: CDN 로딩 테스트
+
+### 로컬 테스트
+
+```bash
+# 저장소 클론
+git clone https://github.com/gunggme/chatbot-popup.git
+cd chatbot-popup
+
+# 개발 서버 실행
+python -m http.server 8000
+# 또는
+npx serve .
+
+# http://localhost:8000에서 확인
+```
+
 ## 🌟 고급 사용법
 
 ### 이벤트 리스너
@@ -238,8 +343,14 @@ Response: { id, content, role, timestamp, ... }
 git clone https://github.com/gunggme/chatbot-popup.git
 cd chatbot-popup
 
+# 의존성 설치
+npm install
+
 # 개발 서버 실행
 npm run serve
+
+# 빌드 (압축 및 난독화)
+npm run build
 
 # http://localhost:8000에서 확인
 ```
@@ -249,13 +360,34 @@ npm run serve
 ```
 chatbot-popup-library/
 ├── lib/
-│   ├── chatbot-library.js      # 원본 파일
-│   └── chatbot-library.min.js  # 압축된 파일
+│   ├── chatbot-library.js          # 원본 파일
+│   ├── chatbot-library.min.js      # 압축된 파일
+│   ├── chatbot-library.obf.js      # 기본 난독화 파일
+│   └── chatbot-library.secure.js   # 고급 난독화 파일
 ├── examples/
-│   └── index.html              # 예제 파일
+│   └── index.html                  # 기본 예제
+├── test-obfuscated.html            # 난독화 테스트 페이지
+├── test-cdn.html                   # CDN 테스트 페이지
+├── obfuscator-config.json          # 난독화 설정
 ├── package.json
 ├── README.md
 └── LICENSE
+```
+
+### 빌드 명령어
+
+```bash
+# 기본 압축
+npm run minify
+
+# 기본 난독화
+npm run obfuscate
+
+# 고급 난독화
+npm run obfuscate:secure
+
+# 모든 버전 생성
+npm run build:all
 ```
 
 ## 📋 브라우저 지원
@@ -293,6 +425,7 @@ chatbot-popup-library/
 - 🎨 채널톡 스타일 UI
 - 📱 반응형 지원
 - 🌈 테마 커스터마이징
+- 🔒 4단계 보안 수준 지원 (원본/압축/기본난독화/고급난독화)
 
 ---
 

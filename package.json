@@ -1,28 +1,32 @@
 {
   "name": "chatbot-popup-library",
   "version": "1.0.0",
-  "description": "채널톡 스타일의 채팅봇 팝업 라이브러리 - 타이핑 효과와 현대적인 UI를 제공하는 가벼운 JavaScript 라이브러리",
+  "description": "A modern, Channel Talk-style chatbot popup library with typing effects and beautiful UI",
   "main": "lib/chatbot-library.js",
   "files": [
-    "lib/",
-    "README.md",
-    "LICENSE"
+    "lib/"
   ],
   "scripts": {
-    "build": "echo 'Build completed'",
-    "serve": "python -m http.server 8000 || python3 -m http.server 8000"
+    "serve": "python -m http.server 8000 || npx serve .",
+    "minify": "uglifyjs lib/chatbot-library.js -o lib/chatbot-library.min.js -c -m",
+    "obfuscate": "javascript-obfuscator lib/chatbot-library.js -o lib/chatbot-library.obf.js",
+    "obfuscate:secure": "javascript-obfuscator lib/chatbot-library.js --config obfuscator-config.json -o lib/chatbot-library.secure.js",
+    "build": "npm run minify && npm run obfuscate && npm run obfuscate:secure",
+    "build:all": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "chatbot",
     "popup",
     "chat",
     "ui",
-    "javascript",
     "library",
+    "javascript",
+    "typing-effect",
+    "channel-talk",
     "widget",
-    "customer-support",
-    "ai-chat",
-    "typewriter-effect"
+    "obfuscated",
+    "secure"
   ],
   "author": "gunggme",
   "license": "MIT",
@@ -34,7 +38,10 @@
     "url": "https://github.com/gunggme/chatbot-popup-library/issues"
   },
   "homepage": "https://github.com/gunggme/chatbot-popup-library#readme",
-  "jsdelivr": "lib/chatbot-library.min.js",
-  "unpkg": "lib/chatbot-library.min.js",
-  "cdn": "lib/chatbot-library.min.js"
+  "devDependencies": {
+    "javascript-obfuscator": "^4.0.0",
+    "uglify-js": "^3.17.0"
+  },
+  "browser": "lib/chatbot-library.min.js",
+  "cdn": "https://cdn.jsdelivr.net/gh/gunggme/chatbot-popup@latest/lib/chatbot-library.min.js"
 } 

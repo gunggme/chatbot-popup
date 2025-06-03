@@ -1,0 +1,23 @@
+{
+  "compact": true,
+  "controlFlowFlattening": true,
+  "controlFlowFlatteningThreshold": 0.8,
+  "deadCodeInjection": true,
+  "deadCodeInjectionThreshold": 0.5,
+  "debugProtection": true,
+  "debugProtectionInterval": 100,
+  "disableConsoleOutput": true,
+  "identifierNamesGenerator": "mangled-shuffled",
+  "rotateStringArray": true,
+  "selfDefending": true,
+  "stringArray": true,
+  "stringArrayThreshold": 0.8,
+  "stringArrayEncoding": ["base64"],
+  "stringArrayWrappersCount": 2,
+  "stringArrayWrappersChainedCalls": true,
+  "stringArrayWrappersType": "function",
+  "transformObjectKeys": true,
+  "unicodeEscapeSequence": true,
+  "splitStrings": true,
+  "splitStringsChunkLength": 5
+} 
