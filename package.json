@@ -1,0 +1,40 @@
+{
+  "name": "chatbot-popup-library",
+  "version": "1.0.0",
+  "description": "채널톡 스타일의 채팅봇 팝업 라이브러리 - 타이핑 효과와 현대적인 UI를 제공하는 가벼운 JavaScript 라이브러리",
+  "main": "lib/chatbot-library.js",
+  "files": [
+    "lib/",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "echo 'Build completed'",
+    "serve": "python -m http.server 8000 || python3 -m http.server 8000"
+  },
+  "keywords": [
+    "chatbot",
+    "popup",
+    "chat",
+    "ui",
+    "javascript",
+    "library",
+    "widget",
+    "customer-support",
+    "ai-chat",
+    "typewriter-effect"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/[YOUR_USERNAME]/chatbot-popup-library.git"
+  },
+  "bugs": {
+    "url": "https://github.com/[YOUR_USERNAME]/chatbot-popup-library/issues"
+  },
+  "homepage": "https://github.com/[YOUR_USERNAME]/chatbot-popup-library#readme",
+  "jsdelivr": "lib/chatbot-library.min.js",
+  "unpkg": "lib/chatbot-library.min.js",
+  "cdn": "lib/chatbot-library.min.js"
+} 

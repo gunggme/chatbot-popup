@@ -1,0 +1,44 @@
+{
+  "name": "chatbot-popup-library",
+  "version": "1.0.0",
+  "description": "채널톡 스타일의 채팅봇 팝업 라이브러리",
+  "main": "dist/chatbot-library.min.js",
+  "scripts": {
+    "build": "webpack --mode=production",
+    "build:dev": "webpack --mode=development",
+    "serve": "webpack-dev-server --mode=development --open",
+    "minify": "uglifyjs chatbot-library.js -c -m -o chatbot-library.min.js",
+    "watch": "webpack --mode=development --watch"
+  },
+  "keywords": [
+    "chatbot",
+    "popup",
+    "chat",
+    "widget",
+    "javascript",
+    "library"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^5.88.0",
+    "webpack-cli": "^5.1.0",
+    "webpack-dev-server": "^4.15.0",
+    "terser-webpack-plugin": "^5.3.9",
+    "html-webpack-plugin": "^5.5.3",
+    "uglify-js": "^3.17.4"
+  },
+  "files": [
+    "dist/",
+    "README.md",
+    "example.html"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/chatbot-popup-library.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/chatbot-popup-library/issues"
+  },
+  "homepage": "https://github.com/yourusername/chatbot-popup-library#readme"
+} 

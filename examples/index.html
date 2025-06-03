@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatBot Popup Library - 예제</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            margin: 0;
+            padding: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: white;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        
+        .demo-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .demo-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        
+        .demo-btn {
+            background: #F1D302;
+            color: #4E3629;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(241, 211, 2, 0.3);
+        }
+        
+        .demo-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(241, 211, 2, 0.4);
+        }
+        
+        .code-block {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+            border-left: 4px solid #F1D302;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .demo-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .demo-btn {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🤖 ChatBot Popup Library</h1>
+        <p class="subtitle">채널톡 스타일의 현대적인 채팅봇 팝업 라이브러리</p>
+        
+        <div class="demo-section">
+            <h2>✨ 실시간 데모</h2>
+            <p>오른쪽 하단의 채팅 버튼을 클릭하여 채팅봇을 체험해보세요!</p>
+            
+            <div class="demo-buttons">
+                <button class="demo-btn" onclick="openChatbot()">채팅봇 열기</button>
+                <button class="demo-btn" onclick="closeChatbot()">채팅봇 닫기</button>
+                <button class="demo-btn" onclick="toggleChatbot()">토글</button>
+                <button class="demo-btn" onclick="changeTheme()">테마 변경</button>
+            </div>
+        </div>
+        
+        <div class="demo-section">
+            <h2>🚀 빠른 시작</h2>
+            <p>단 한 줄의 코드로 바로 시작하세요:</p>
+            
+            <div class="code-block">
+&lt;script src="https://cdn.jsdelivr.net/npm/chatbot-popup-library@1.0.0/lib/chatbot-library.min.js"&gt;&lt;/script&gt;
+            </div>
+        </div>
+        
+        <div class="demo-section">
+            <h2>⚙️ 커스텀 설정</h2>
+            <div class="code-block">
+&lt;script&gt;
+const chatbot = new ChatBot({
+    apiBaseUrl: 'https://your-api-server.com/api/chat',
+    profileId: 'your-profile-id',
+    theme: {
+        primaryColor: '#007bff',
+        secondaryColor: '#6c757d',
+        backgroundColor: '#ffffff'
+    }
+});
+&lt;/script&gt;
+            </div>
+        </div>
+        
+        <div class="demo-section">
+            <h2>🎨 주요 기능</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>타이핑 효과</h3>
+                    <p>실제 사람이 타이핑하는 듯한 자연스러운 애니메이션</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>반응형 지원</h3>
+                    <p>모바일과 데스크톱 모든 기기에서 완벽 동작</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎭</div>
+                    <h3>테마 커스터마이징</h3>
+                    <p>색상과 스타일을 쉽게 변경 가능</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3>제로 의존성</h3>
+                    <p>별도 라이브러리 없이 바로 사용 가능</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>📚 <a href="https://github.com/[YOUR_USERNAME]/chatbot-popup-library" style="color: #F1D302;">GitHub</a> | 
+               📦 <a href="https://www.npmjs.com/package/chatbot-popup-library" style="color: #F1D302;">npm</a> | 
+               📖 <a href="#" style="color: #F1D302;">문서</a></p>
+        </div>
+    </div>
+    
+    <!-- ChatBot Library -->
+    <script src="../lib/chatbot-library.js"></script>
+    
+    <script>
+        // 현재 테마 인덱스
+        let currentThemeIndex = 0;
+        
+        // 테마 목록
+        const themes = [
+            {
+                name: '기본',
+                colors: {
+                    primaryColor: '#F1D302',
+                    secondaryColor: '#4E3629',
+                    backgroundColor: '#FFFFFF'
+                }
+            },
+            {
+                name: '블루',
+                colors: {
+                    primaryColor: '#3182ce',
+                    secondaryColor: '#1a365d',
+                    backgroundColor: '#ffffff'
+                }
+            },
+            {
+                name: '그린',
+                colors: {
+                    primaryColor: '#38a169',
+                    secondaryColor: '#1a365d',
+                    backgroundColor: '#ffffff'
+                }
+            },
+            {
+                name: '다크',
+                colors: {
+                    primaryColor: '#2d3748',
+                    secondaryColor: '#ffffff',
+                    backgroundColor: '#1a202c'
+                }
+            }
+        ];
+        
+        function openChatbot() {
+            if (window.chatbotInstance) {
+                window.chatbotInstance.open();
+            }
+        }
+        
+        function closeChatbot() {
+            if (window.chatbotInstance) {
+                window.chatbotInstance.close();
+            }
+        }
+        
+        function toggleChatbot() {
+            if (window.chatbotInstance) {
+                window.chatbotInstance.toggle();
+            }
+        }
+        
+        function changeTheme() {
+            currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+            const newTheme = themes[currentThemeIndex];
+            
+            // 기존 채팅봇 제거
+            if (window.chatbotInstance) {
+                window.chatbotInstance.destroy();
+            }
+            
+            // 새 테마로 채팅봇 생성
+            window.chatbotInstance = new ChatBot({
+                theme: newTheme.colors
+            });
+            
+            // 사용자에게 알림
+            alert(`테마가 "${newTheme.name}"로 변경되었습니다!`);
+        }
+        
+        // 페이지 로드 시 알림
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                if (window.chatbotInstance) {
+                    alert('🎉 채팅봇이 준비되었습니다! 오른쪽 하단의 버튼을 클릭해보세요.');
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatBot Library 간단 테스트</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #4E3629;
+            margin-bottom: 20px;
+        }
+        .info {
+            background: #f0f9ff;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #0ea5e9;
+            margin: 20px 0;
+        }
+        .test-buttons {
+            margin: 30px 0;
+        }
+        .test-btn {
+            background: #F1D302;
+            color: #4E3629;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 5px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        .test-btn:hover {
+            background: #e6c800;
+            transform: translateY(-1px);
+        }
+        .mock-api {
+            background: #fef3c7;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #f59e0b;
+            text-align: left;
+        }
+        .warning {
+            background: #fee2e2;
+            color: #dc2626;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #dc2626;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🤖 ChatBot Library 테스트</h1>
+        
+        <div class="info">
+            <h3>📝 테스트 가이드</h3>
+            <p>우측 하단의 노란색 채팅 버튼을 클릭하여 챗봇을 테스트해보세요!</p>
+            <p>아래 버튼들로 JavaScript API도 테스트할 수 있습니다.</p>
+        </div>
+
+        <div class="warning">
+            <strong>⚠️ 주의:</strong> 이 테스트는 목업 API를 사용합니다. 실제 서버 연결은 API 엔드포인트를 설정해야 합니다.
+        </div>
+
+        <div class="test-buttons">
+            <h3>🎮 JavaScript API 테스트</h3>
+            <button class="test-btn" onclick="window.chatbotInstance?.open()">챗봇 열기</button>
+            <button class="test-btn" onclick="window.chatbotInstance?.close()">챗봇 닫기</button>
+            <button class="test-btn" onclick="window.chatbotInstance?.toggle()">챗봇 토글</button>
+            <button class="test-btn" onclick="showChatbotInfo()">챗봇 정보</button>
+        </div>
+
+        <div class="mock-api">
+            <h4>🔧 목업 API 설정</h4>
+            <p>현재 테스트는 목업 API를 사용합니다:</p>
+            <ul style="text-align: left;">
+                <li>새 채팅방 생성: 자동으로 임시 ID 할당</li>
+                <li>메시지 전송: "안녕하세요! 테스트 응답입니다." 반환</li>
+                <li>실제 API 연결을 위해서는 서버 설정이 필요합니다</li>
+            </ul>
+        </div>
+
+        <div style="margin-top: 40px; color: #666;">
+            <p>라이브러리가 정상적으로 로드되면 우측 하단에 노란색 채팅 버튼이 나타납니다.</p>
+        </div>
+    </div>
+
+    <script>
+        // 목업 API 설정
+        const originalFetch = window.fetch;
+        window.fetch = function(url, options) {
+            console.log('Mock API 호출:', url, options);
+            
+            // 채팅방 생성 목업
+            if (url.includes('/api/chat/rooms') && options?.method === 'POST') {
+                return Promise.resolve({
+                    ok: true,
+                    json: () => Promise.resolve({
+                        id: 'mock-room-' + Date.now(),
+                        profileId: 'mock-profile',
+                        profileName: '테스트 봇',
+                        costLimitInKrw: 0
+                    })
+                });
+            }
+            
+            // 메시지 목록 조회 목업
+            if (url.includes('/messages') && !options?.method) {
+                return Promise.resolve({
+                    ok: true,
+                    json: () => Promise.resolve([])
+                });
+            }
+            
+            // 메시지 전송 목업
+            if (url.includes('/messages') && options?.method === 'POST') {
+                const body = JSON.parse(options.body);
+                return new Promise(resolve => {
+                    setTimeout(() => {
+                        resolve({
+                            ok: true,
+                            json: () => Promise.resolve({
+                                id: Date.now(),
+                                content: `안녕하세요! "${body.message}"에 대한 테스트 응답입니다. 이것은 목업 API 응답입니다.`,
+                                role: 'assistant',
+                                timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+                                tokens: 0,
+                                costInKrw: 0,
+                                serverId: null
+                            })
+                        });
+                    }, 1000); // 1초 지연으로 실제 API 호출처럼 시뮬레이션
+                });
+            }
+            
+            // 기본 fetch 동작
+            return originalFetch.apply(this, arguments);
+        };
+
+        function showChatbotInfo() {
+            if (window.chatbotInstance) {
+                alert('ChatBot 인스턴스가 정상적으로 로드되었습니다!\n\n가능한 API:\n- open()\n- close()\n- toggle()\n- destroy()');
+            } else {
+                alert('ChatBot 인스턴스를 찾을 수 없습니다.');
+            }
+        }
+
+        // 로드 확인
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                if (window.ChatBot) {
+                    console.log('✅ ChatBot 라이브러리가 성공적으로 로드되었습니다.');
+                } else {
+                    console.error('❌ ChatBot 라이브러리 로드에 실패했습니다.');
+                }
+            }, 100);
+        });
+    </script>
+
+    <!-- ChatBot Library 로드 -->
+    <script src="./chatbot-library.js" 
+            data-api-url="/api/chat" 
+            data-profile-id="test-profile"></script>
+</body>
+</html> 
