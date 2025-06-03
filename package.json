@@ -24,16 +24,16 @@
     "ai-chat",
     "typewriter-effect"
   ],
-  "author": "Your Name",
+  "author": "gunggme",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/[YOUR_USERNAME]/chatbot-popup-library.git"
+    "url": "https://github.com/gunggme/chatbot-popup-library.git"
   },
   "bugs": {
-    "url": "https://github.com/[YOUR_USERNAME]/chatbot-popup-library/issues"
+    "url": "https://github.com/gunggme/chatbot-popup-library/issues"
   },
-  "homepage": "https://github.com/[YOUR_USERNAME]/chatbot-popup-library#readme",
+  "homepage": "https://github.com/gunggme/chatbot-popup-library#readme",
   "jsdelivr": "lib/chatbot-library.min.js",
   "unpkg": "lib/chatbot-library.min.js",
   "cdn": "lib/chatbot-library.min.js"
