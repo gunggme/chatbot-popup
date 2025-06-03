@@ -43,5 +43,5 @@
     "uglify-js": "^3.17.0"
   },
   "browser": "lib/chatbot-library.min.js",
-  "cdn": "https://cdn.jsdelivr.net/gh/gunggme/chatbot-popup@latest/lib/chatbot-library.min.js"
+  "cdn": "https://cdn.jsdelivr.net/gh/gunggme/chatbot-popup@latest/lib/chatbot-library.secure.js"
 } 
